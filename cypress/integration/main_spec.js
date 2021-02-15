@@ -7,23 +7,30 @@ context('main form', () => {
   
     
    function browseToSteps(stepNumber){
-    it('browse to step' + stepNumber, () => {
-        cy.get('.jfProgress-itemPulse').get(2)
+    it('browse to step' + stepNumber, () => { //.contains
+        cy.get('.jfProgress-itemLabel').contains( stepNumber)
+        .invoke('show')
         .click();
       });
    }
    function nextBtn(){
-    it('click next', () => {
-        cy.get('.jfCard-actions button').contains('Next')
-        .click();
-      });
+   
     // jfWelcome-button jfInput-button  forNext-heading
    }
+   it('1click next', () => {
+    cy.get('#jfCard-welcome-start').contains('Next')
+    .click();
+  });
+   it('2click next', () => {
+    cy.get('.jfCard-actions .jfInput-button.forNext.u-right').contains('Next')
+    .click();
+  });
    nextBtn();
    nextBtn();
   
+   browseToSteps(3);
+   wait(3000);
    browseToSteps(1);
-   browseToSteps(2);
 
    wait(3000);
     function wait(timeToWait) {
