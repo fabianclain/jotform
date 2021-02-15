@@ -1,6 +1,7 @@
 /// <reference types="cypress" />
 const faker = require("faker");
 const css = require("./../constants/css");
+const Utils = require("./../modules/Utils");
 
 context('main form', () => {
     before(() => {
@@ -21,7 +22,6 @@ context('main form', () => {
     }
 
     it('click next', () => {
-        // cy.get('#jfCard-welcome-start').contains('Next')
         cy.get(css.start).contains('Next')
             .click();
     });
@@ -29,60 +29,48 @@ context('main form', () => {
         cy.get(css.firstName)
             .type(faker.name.firstName());
     });
-    it('add last name', () => {
-        cy.get(css.lastName)
-            .type(faker.name.lastName(),);
-    });
-    css.nextBtn();
-    // wait(100);
+
+    Utils.addName('first', css.firstName, faker.name.firstName());
+    Utils.addName('last', css.lastName, faker.name.lastName());
+    Utils.nextBtn();
     it('upload a file', () => {
-  
         cy.get(css.input)
-        .attachFile('AutomationHomework2021.pdf')
-   
+            .attachFile('AutomationHomework2021.pdf')
     });
     it('check uploaded file', () => {
-        cy.get('.qq-upload-file')
+        cy.get(css.fileUpload)
             .should('be.visible');
     });
-    css.nextBtn();
+
+    Utils.nextBtn();
 
     it('draw something', () => {
-        let signature =  cy.get('.jSignature')
-        function draw(){
-            for(let i=0; i<100;i++){
-                signature.click(i, i)
-            }
-        }
-        draw()
+        let signature = cy.get(css.signature)
+        Utils.draw(signature)
     });
-    css.nextBtn();
+    Utils.nextBtn();
 
     it('open calendar', () => {
-        cy.get('.jfField-svgWrapper.forDate')
+        cy.get(css.forDate)
             .click();
     });
     it('click on today', () => {
-        cy.get('.button.todayButton')
+        cy.get(css.todayButton)
             .click();
     });
+    Utils.nextBtn();
 
-    it('click next', () => {
-        cy.get('.isVisible .jfCard-actions .jfInput-button.forNext.u-right')
-            .click();
-    });
     it('open dropdown', () => {
-        cy.get('.jfDropdown-toggle')
+        cy.get(css.dropdown)
             .click();
     });
 
     it('select favorite pet', () => {
-        cy.get('.jfDropdown-optionListItem').contains('Name of the first pet')
+        cy.get(css.dropdownItem).contains('Name of the first pet')
             .click();
     });
-    it('type input', () => {
-        cy.get('.jfField.isValid input')
-            .type('Louie');
-    });
+
+    Utils.addName('pet', css.secretValue, faker.name.middleName());
+
 
 })
