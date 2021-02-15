@@ -3,14 +3,14 @@ const css = require("./../constants/css");
 let nextBtn = function () {
     it('click next', () => {
         cy.get(css.nextBtn)
-        .should('be.visible')
+            .should('be.visible')
             .click();
     });
 };
 let addName = function (stepName, givenClass, fakerName) {
-    it('add '+ stepName +' name', () => {
+    it('add ' + stepName + ' name', () => {
         cy.get(givenClass)
-        .should('be.visible')
+            .should('be.visible')
             .type(fakerName);
     });
 };
@@ -22,11 +22,11 @@ let draw = function (cssItem) {
     // }
 
     cssItem
-    .should('be.visible')
-    .click(0, 0)
+        .should('be.visible')
+        .click(0, 0)
 };
 let browseToSteps = function (stepNumber) {
-    it('browse to step' + stepNumber, () => { 
+    it('browse to step' + stepNumber, () => {
         cy.get(css.step).contains(stepNumber)
             .invoke('show')
             .click();
@@ -38,7 +38,29 @@ let wait = function (timeToWait) {
         cy.wait(timeToWait);
     })
 };
+let clickTo = function (should, cssClass) {
+    it('it should ' + should, () => {
+        cy.get(cssClass)
+            .should('be.visible')
+            .click();
+    });
+};
+let toBeVisible = function (should, cssClass) {
+    it('it should ' + should, () => {
+        cy.get(cssClass)
+            .should('be.visible')
+    });
+};
+let clickThatContains = function (should, cssClass, contains) {
+    it('it should ' + should, () => {
+        cy.get(cssClass).contains(contains)
+            .click();
+    });
+};
 module.exports = {
+    clickThatContains,
+    toBeVisible,
+    clickTo,
     wait,
     browseToSteps,
     draw,

@@ -14,10 +14,8 @@ context('main form', () => {
             .should('be.visible');
     });
 
-    it('click next', () => {
-        cy.get(css.start).contains('Next')
-            .click();
-    });
+
+    Utils.clickThatContains('click on the first next', css.start, 'Next')
 
     Utils.addName('first', css.firstName, faker.name.firstName());
     Utils.addName('last', css.lastName, faker.name.lastName());
@@ -27,10 +25,8 @@ context('main form', () => {
         cy.get(css.input)
             .attachFile('AutomationHomework2021.pdf')
     });
-    it('check uploaded file', () => {
-        cy.get(css.fileUpload)
-            .should('be.visible');
-    });
+
+    Utils.clickTo('uploaded file to be visible', css.fileUpload)
 
     Utils.nextBtn();
 
@@ -40,36 +36,25 @@ context('main form', () => {
 
         Utils.draw(signature)
     });
+
     Utils.nextBtn();
 
-    it('open calendar', () => {
-        cy.get(css.forDate)
-            .should('be.visible')
-            .click();
-    });
-    it('click on today', () => {
-        cy.get(css.todayButton)
-            .should('be.visible')
-            .click();
-    });
+    Utils.clickTo('click and open calendar', css.forDate)
+
+    Utils.clickTo('click on today Btn', css.todayButton)
+
     Utils.nextBtn();
 
-    it('open dropdown', () => {
-        cy.get(css.dropdown)
-            .should('be.visible')
-            .click();
-    });
+    Utils.clickTo('Open Dropdown', css.dropdown)
 
-    it('select favorite pet', () => {
-        cy.get(css.dropdownItem).contains('Name of the first pet')
-            .should('be.visible')
-            .click();
-    });
+    Utils.clickThatContains('select favorite pet', css.dropdownItem, 'Name of the first pet')
+
     Utils.addName('pet', css.secretValue, faker.name.findName());
-    it('should submit button', () => {
-        cy.get(css.submitBtn)
-            .should('be.visible')
-            .click();
-    });
+
+    Utils.toBeVisible('have submit button', css.submitBtn)
+
+    Utils.clickTo('submit button', css.submitBtn)
+
+    Utils.toBeVisible('check thank you page', css.thankYouCss)
 
 })
