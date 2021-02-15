@@ -8,19 +8,6 @@ context('main form', () => {
         cy.visit('https://form.jotform.com/210137027408345');
     })
 
-    function browseToSteps(stepNumber) {
-        it('browse to step' + stepNumber, () => { //.contains
-            cy.get('.jfProgress-itemLabel').contains(stepNumber)
-                .invoke('show')
-                .click();
-        });
-    }
-    function wait(timeToWait) {
-        it('wait ' + timeToWait / 1000 + ' seconds', () => {
-            cy.wait(timeToWait);
-        })
-    }
-
     it('click next', () => {
         cy.get(css.start).contains('Next')
             .click();
@@ -33,6 +20,7 @@ context('main form', () => {
     Utils.addName('first', css.firstName, faker.name.firstName());
     Utils.addName('last', css.lastName, faker.name.lastName());
     Utils.nextBtn();
+    
     it('upload a file', () => {
         cy.get(css.input)
             .attachFile('AutomationHomework2021.pdf')
@@ -70,7 +58,7 @@ context('main form', () => {
             .click();
     });
 
-    Utils.addName('pet', css.secretValue, faker.name.middleName());
+    Utils.addName('pet', css.secretValue, faker.name.findName());
 
 
 })

@@ -10,5 +10,6 @@ module.exports = {
     todayButton: '.button.todayButton',
     dropdown: '.jfDropdown-toggle',
     dropdownItem: '.jfDropdown-optionListItem',
-    secretValue: '.jfField.isValid input'
+    secretValue: '.jfField.isValid input',
+    step: '.jfProgress-itemLabel',
 };
