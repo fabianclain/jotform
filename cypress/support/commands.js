@@ -23,3 +23,12 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
+Cypress.Commands.add('simulateOpenLayersEvent', (ol, map, type, x, y, opt_shiftKey = undefined) => {
+    var viewport = map.getViewport();
+    let position = viewport.getBoundingClientRect();
+    cy.log(`left: ${position.left}, top: ${position.top}, width: ${position.width}, height: ${position.height}`)
+    cy.get('canvas').trigger(type, {
+        clientX: position.left + x + (position.width / 2),
+        clientY: position.top + y + (position.height / 2),
+    })
+})
