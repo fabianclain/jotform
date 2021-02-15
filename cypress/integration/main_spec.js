@@ -1,10 +1,11 @@
 /// <reference types="cypress" />
+const faker = require("faker");
+const css = require("./../constants/css");
 
 context('main form', () => {
     before(() => {
         cy.visit('https://form.jotform.com/210137027408345');
     })
-
 
     function browseToSteps(stepNumber) {
         it('browse to step' + stepNumber, () => { //.contains
@@ -13,40 +14,50 @@ context('main form', () => {
                 .click();
         });
     }
-    function nextBtn() {
-
-        // jfWelcome-button jfInput-button  forNext-heading
-    }
     function wait(timeToWait) {
         it('wait ' + timeToWait / 1000 + ' seconds', () => {
             cy.wait(timeToWait);
         })
     }
 
-    it('1click next', () => {
-        cy.get('#jfCard-welcome-start').contains('Next')
+    it('click next', () => {
+        // cy.get('#jfCard-welcome-start').contains('Next')
+        cy.get(css.start).contains('Next')
             .click();
     });
-
-
-    it('2click next', () => {
-        cy.get('.jfCard-actions .jfInput-button.forNext.u-right').contains('Next')
-            .click();
+    it('add first name', () => {
+        cy.get(css.firstName)
+            .type(faker.name.firstName());
     });
-    nextBtn();
-    nextBtn();
+    it('add last name', () => {
+        cy.get(css.lastName)
+            .type(faker.name.lastName(),);
+    });
+    css.nextBtn();
+    // wait(100);
+    it('upload a file', () => {
+  
+        cy.get(css.input)
+        .attachFile('AutomationHomework2021.pdf')
+   
+    });
+    it('check uploaded file', () => {
+        cy.get('.qq-upload-file')
+            .should('be.visible');
+    });
+    css.nextBtn();
 
-    // browseToSteps(3);
-    // it('draw something', () => {
-    //     let signature =  cy.get('.jSignature')
-    //     function draw(){
-    //         for(let i=0; i<100;i++){
-    //             signature.click(i, i)
-    //         }
-    //     }
-    //     draw()
-    // });
-    browseToSteps(4);
+    it('draw something', () => {
+        let signature =  cy.get('.jSignature')
+        function draw(){
+            for(let i=0; i<100;i++){
+                signature.click(i, i)
+            }
+        }
+        draw()
+    });
+    css.nextBtn();
+
     it('open calendar', () => {
         cy.get('.jfField-svgWrapper.forDate')
             .click();
@@ -54,12 +65,8 @@ context('main form', () => {
     it('click on today', () => {
         cy.get('.button.todayButton')
             .click();
-        // .type({enter});
     });
-    // it('clear today calendar', () => {
-    //     cy.get('["type="text""]')
-    //     .click();
-    // });
+
     it('click next', () => {
         cy.get('.isVisible .jfCard-actions .jfInput-button.forNext.u-right')
             .click();
@@ -77,13 +84,5 @@ context('main form', () => {
         cy.get('.jfField.isValid input')
             .type('Louie');
     });
-
-
-    //    wait(3000);
-    //    browseToSteps(1);
-
-    wait(5000);
-
-
 
 })
