@@ -12,4 +12,6 @@ module.exports = {
     dropdownItem: '.jfDropdown-optionListItem',
     secretValue: '.jfField.isValid input',
     step: '.jfProgress-itemLabel',
+    title:'#header_welcomePage',
+    submitBtn: '.jfInput-button.forSubmit.form-submit-button.u-right'
 };

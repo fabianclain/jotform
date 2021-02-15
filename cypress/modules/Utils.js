@@ -3,12 +3,14 @@ const css = require("./../constants/css");
 let nextBtn = function () {
     it('click next', () => {
         cy.get(css.nextBtn)
+        .should('be.visible')
             .click();
     });
 };
 let addName = function (stepName, givenClass, fakerName) {
     it('add '+ stepName +' name', () => {
         cy.get(givenClass)
+        .should('be.visible')
             .type(fakerName);
     });
 };
@@ -19,7 +21,9 @@ let draw = function (cssItem) {
     //     cssItem.click(i, i)
     // }
 
-    cssItem.click(0, 0)
+    cssItem
+    .should('be.visible')
+    .click(0, 0)
 };
 let browseToSteps = function (stepNumber) {
     it('browse to step' + stepNumber, () => { 
