@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Mocha Tests" time="4.3890" tests="16" failures="0">
+  <testsuite name="Root Suite" timestamp="2021-02-15T13:42:43" tests="0" file="cypress/integration/main_spec.js" time="0.0000" failures="0">
+  </testsuite>
+  <testsuite name="main form" timestamp="2021-02-15T13:42:43" tests="16" time="4.3890" failures="0">
+    <testcase name="main form click next" time="1.4810" classname="click next">
+    </testcase>
+    <testcase name="main form add first name" time="0.3500" classname="add first name">
+    </testcase>
+    <testcase name="main form add first name" time="0.1330" classname="add first name">
+    </testcase>
+    <testcase name="main form add last name" time="0.2100" classname="add last name">
+    </testcase>
+    <testcase name="main form click next" time="0.0960" classname="click next">
+    </testcase>
+    <testcase name="main form upload a file" time="0.0680" classname="upload a file">
+    </testcase>
+    <testcase name="main form check uploaded file" time="0.0240" classname="check uploaded file">
+    </testcase>
+    <testcase name="main form click next" time="0.2390" classname="click next">
+    </testcase>
+    <testcase name="main form draw something" time="0.3060" classname="draw something">
+    </testcase>
+    <testcase name="main form click next" time="0.0960" classname="click next">
+    </testcase>
+    <testcase name="main form open calendar" time="0.3190" classname="open calendar">
+    </testcase>
+    <testcase name="main form click on today" time="0.0970" classname="click on today">
+    </testcase>
+    <testcase name="main form click next" time="0.0920" classname="click next">
+    </testcase>
+    <testcase name="main form open dropdown" time="0.3050" classname="open dropdown">
+    </testcase>
+    <testcase name="main form select favorite pet" time="0.2040" classname="select favorite pet">
+    </testcase>
+    <testcase name="main form add pet name" time="0.3690" classname="add pet name">
+    </testcase>
+  </testsuite>
+</testsuites>

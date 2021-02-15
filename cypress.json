@@ -1,4 +1,9 @@
 {
     "viewportWidth": 1800,
-    "viewportHeight": 1260
+    "viewportHeight": 1260,
+    "reporter": "junit",
+    "reporterOptions": {
+      "mochaFile": "results/my-test-output-[hash].xml"
+    }
+  
   }
